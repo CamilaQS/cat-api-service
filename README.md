@@ -25,7 +25,7 @@ src/main/java/com/example/catapi/
 └── exception/              # Tratamento de exceções
 
 ```
-### 2. Configurar a The Cat API Key
+###  Configurar a The Cat API Key
 
 A The Cat API requer uma chave de API para acesso completo. Você pode obter uma gratuitamente em [The Cat API](https://thecatapi.com/signup).
 
@@ -38,7 +38,7 @@ catapi.api-key=SUA_CHAVE_DA_API_AQUI
 ```
 
 
-### 3. Configurar o Banco de Dados PostgreSQL
+###  Configurar o Banco de Dados PostgreSQL
 
 Certifique-se de que o PostgreSQL esteja instalado e em execução. Crie um banco de dados para o projeto:
 
@@ -48,7 +48,7 @@ CREATE USER catapi_user WITH PASSWORD 'catapi_password';
 GRANT ALL PRIVILEGES ON DATABASE catapi_db TO catapi_user;
 ```
 
-### 4. Configuração do `application.properties`
+###  Configuração do `application.properties`
 
 O arquivo `src/main/resources/application.properties` contém as configurações da aplicação. Verifique se as configurações do banco de dados e da API estão corretas:
 
@@ -80,7 +80,7 @@ logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{3
 ```
 
 
-### 5. Compilar e Executar a Aplicação
+###  Compilar e Executar a Aplicação
 
 Navegue até a raiz do projeto e execute:
 
