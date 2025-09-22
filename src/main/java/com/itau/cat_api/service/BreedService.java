@@ -26,9 +26,7 @@ public class BreedService {
     @Autowired
     private CatApiClientService catApiClientService;
 
-    /**
-     * Coleta e salva todas as raças da The Cat API
-     */
+
     public CompletableFuture<Void> collectAndSaveAllBreeds() {
         logger.info("Starting breed collection process");
 
@@ -65,27 +63,19 @@ public class BreedService {
         return breedRepository.findAll();
     }
 
-    /**
-     * Busca por raça por id
-     */
 
     public Optional<Breed> getBreedsById(String id){
         logger.debug("Fetching breeds by temperament: {}", id);
         return breedRepository.findById(id);
     }
 
-    /**
-     * Busca por temperamento
-     */
 
     public List<Breed> getBreedsByTemperament(String temperament) {
         logger.debug("Fetching breeds by temperament: {}", temperament);
         return breedRepository.findByTemperamentContainingIgnoreCase(temperament);
     }
 
-    /**
-     * Busca raças por origem
-     */
+
     public List<Breed> getBreedsByOrigin(String origin) {
         logger.debug("Fetching breeds by origin: {}", origin);
         return breedRepository.findByOriginIgnoreCase(origin);

@@ -28,9 +28,8 @@ public class ImageService {
     @Autowired
     private CatApiClientService catApiClientService;
 
-    /**
-     * Coleta e salva imagens para todas as raças
-     */
+
+
     public CompletableFuture<Void> collectAndSaveBreedImages() {
         logger.info("Starting breed images collection process");
 
@@ -45,9 +44,7 @@ public class ImageService {
                 .thenRun(() -> logger.info("Breed images collection process completed"));
     }
 
-    /**
-     * Coleta e salva imagens de categorias (chapéu e óculos)
-     */
+
     public CompletableFuture<Void> collectAndSaveCategoryImages() {
         logger.info("Starting category images collection process");
 
@@ -92,17 +89,13 @@ public class ImageService {
         return image;
     }
 
-    /**
-     * Busca imagens por categoria
-     */
+
     public List<Image> getImagesByCategory(Image.ImageCategory category) {
         logger.debug("Fetching images by category: {}", category);
         return imageRepository.findByCategory(category);
     }
 
-    /**
-     * Busca imagens por raça
-     */
+
     public List<Image> getImagesByBreedId(String breedId) {
         logger.debug("Fetching images by breed ID: {}", breedId);
         return imageRepository.findByBreedId(breedId);

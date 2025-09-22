@@ -49,17 +49,7 @@ public class BreedController {
                 });
     }
 
- /*   @GetMapping("/by-temperament/{temperament}")
-    public CompletableFuture<ResponseEntity<List<Breed>>> getBreedsByTemperament(@PathVariable String temperament){
 
-        return CompletableFuture.supplyAsync(() -> {
-            List<Breed> breeds = breedService.getBreedsByTemperament(temperament);
-            logger.info("Found {} breeds with temperament: {}", breeds.size(), temperament);
-            return ResponseEntity.ok(breeds);
-        });
-
-    }
-    */
 
     @GetMapping("/{id}")
     public ResponseEntity<Breed> getBreedById(@PathVariable String id) {

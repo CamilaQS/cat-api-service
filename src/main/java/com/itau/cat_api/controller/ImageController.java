@@ -23,9 +23,6 @@ public class ImageController {
     @Autowired
     private ImageService imageService;
 
-    /**
-     * Busca imagens por categoria
-     */
     @GetMapping("/category/{category}")
     public ResponseEntity<List<Image>> getImagesByCategory(@PathVariable String category) {
         logger.info("GET /api/images/category/{} - Getting images by category", category);
@@ -41,9 +38,7 @@ public class ImageController {
         }
     }
 
-    /**
-     * Busca imagens por raça
-     */
+
     @GetMapping("/breed/{breedId}")
     public ResponseEntity<List<Image>> getImagesByBreed(@PathVariable String breedId) {
         logger.info("GET /api/images/breed/{} - Getting images by breed", breedId);
@@ -53,9 +48,7 @@ public class ImageController {
         return ResponseEntity.ok(images);
     }
 
-    /**
-     * Endpoint administrativo para coletar imagens de raças
-     */
+
     @PostMapping("/collect/breeds")
     public CompletableFuture<ResponseEntity<String>> collectBreedImages() {
         logger.info("POST /api/images/collect/breeds - Starting breed images collection");
@@ -71,9 +64,7 @@ public class ImageController {
                 });
     }
 
-    /**
-     * Endpoint administrativo para coletar imagens de categorias
-     */
+
     @PostMapping("/collect/categories")
     public CompletableFuture<ResponseEntity<String>> collectCategoryImages() {
         logger.info("POST /api/images/collect/categories - Starting category images collection");
