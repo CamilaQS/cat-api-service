@@ -5,6 +5,7 @@ import com.itau.cat_api.service.BreedService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
@@ -50,24 +51,27 @@ public class BreedController {
     }
 
 
-
     @GetMapping("/{id}")
-    public ResponseEntity<Breed> getBreedById(@PathVariable String id) {
+    public Mono<ResponseEntity<Breed>> getBreedById(@PathVariable String id) {
         logger.info("GET /api/breeds/{} - Getting breed by ID", id);
 
-        Optional<Breed> breed = breedService.getBreedsById(id);
-
-        if (breed.isPresent()) {
-            logger.info("Breed found: {}", breed.get().getName());
-            return ResponseEntity.ok(breed.get());
-        } else {
-            logger.warn("Breed not found with ID: {}", id);
-            return ResponseEntity.notFound().build();
+        if (id == null || id.isBlank()) {
+            logger.warn("Invalid breed ID: {}", id);
+            return Mono.just(ResponseEntity.notFound().build());
         }
+
+        return Mono.fromSupplier(() -> breedService.getBreedsById(id))
+                .map(optionalBreed -> optionalBreed
+                        .map(ResponseEntity::ok)
+                        .orElseGet(() -> {
+                            logger.warn("Breed not found with ID: {}", id);
+                            return ResponseEntity.notFound().build();
+                        })
+                );
     }
 
 
-    @GetMapping("/by-temperament/{temperament}")
+    @GetMapping(value = "/by-temperament/{temperament}", produces = MediaType.APPLICATION_JSON_VALUE)
     public Mono<ResponseEntity<List<Breed>>> getBreedsByTemperament(@PathVariable String temperament) {
         logger.info("Found {} breeds with temperament: {}", temperament);
         return Mono.fromSupplier(() -> breedService.getBreedsByTemperament(temperament))
