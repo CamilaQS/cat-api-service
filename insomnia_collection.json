@@ -1,0 +1,348 @@
+{
+	"_type": "export",
+	"__export_format": 4,
+	"__export_date": "2024-01-01T00:00:00.000Z",
+	"__export_source": "insomnia.desktop.app:v2023.5.8",
+	"resources": [
+		{
+			"_id": "req_get_all_breeds",
+			"parentId": "fld_breeds",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/breeds",
+			"name": "Get All Breeds",
+			"description": "API capaz de listar todas as raças de gatos",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704067200000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_get_breed_by_id",
+			"parentId": "fld_breeds",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/breeds/{{ _.breed_id }}",
+			"name": "Get Breed by ID",
+			"description": "API capaz de listar as informações de uma raça específica",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704067100000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_get_breeds_by_temperament",
+			"parentId": "fld_breeds",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/breeds/by-temperament/{{ _.temperament }}",
+			"name": "Get Breeds by Temperament",
+			"description": "API capaz de a partir de um temperamento listar as raças",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704067000000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_get_breeds_by_origin",
+			"parentId": "fld_breeds",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/breeds/by-origin/{{ _.origin }}",
+			"name": "Get Breeds by Origin",
+			"description": "API capaz de a partir de uma origem listar as raças",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704066900000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_collect_breeds",
+			"parentId": "fld_breeds",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/breeds/collect",
+			"name": "Collect Breeds (Admin)",
+			"description": "Endpoint administrativo para coletar e salvar todas as raças da The Cat API",
+			"method": "POST",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704066800000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_get_images_hats",
+			"parentId": "fld_images",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/images/category/hats",
+			"name": "Get Images by Category - Hats",
+			"description": "Busca imagens de gatos com chapéu",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704066700000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_get_images_sunglasses",
+			"parentId": "fld_images",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/images/category/sunglasses",
+			"name": "Get Images by Category - Sunglasses",
+			"description": "Busca imagens de gatos com óculos",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704066600000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_get_images_by_breed",
+			"parentId": "fld_images",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/images/breed/{{ _.breed_id }}",
+			"name": "Get Images by Breed",
+			"description": "Busca imagens de uma raça específica",
+			"method": "GET",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704066500000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_collect_breed_images",
+			"parentId": "fld_images",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/images/collect/breeds",
+			"name": "Collect Breed Images (Admin)",
+			"description": "Endpoint administrativo para coletar imagens de todas as raças",
+			"method": "POST",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704066400000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "req_collect_category_images",
+			"parentId": "fld_images",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"url": "{{ _.base_url }}/api/images/collect/categories",
+			"name": "Collect Category Images (Admin)",
+			"description": "Endpoint administrativo para coletar imagens de categorias (chapéu e óculos)",
+			"method": "POST",
+			"body": {},
+			"parameters": [],
+			"headers": [
+				{
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"authentication": {},
+			"metaSortKey": -1704066300000,
+			"isPrivate": false,
+			"settingStoreCookies": true,
+			"settingSendCookies": true,
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingFollowRedirects": "global",
+			"_type": "request"
+		},
+		{
+			"_id": "fld_breeds",
+			"parentId": "wrk_cat_api_service",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"name": "Breeds",
+			"description": "Endpoints relacionados às raças de gatos",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1704067200000,
+			"_type": "request_group"
+		},
+		{
+			"_id": "fld_images",
+			"parentId": "wrk_cat_api_service",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"name": "Images",
+			"description": "Endpoints relacionados às imagens de gatos",
+			"environment": {},
+			"environmentPropertyOrder": null,
+			"metaSortKey": -1704066000000,
+			"_type": "request_group"
+		},
+		{
+			"_id": "wrk_cat_api_service",
+			"parentId": null,
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"name": "Cat API Service - The Cat API Challenge",
+			"description": "Workspace para testar as APIs REST da aplicação Cat API Service",
+			"scope": "collection",
+			"_type": "workspace"
+		},
+		{
+			"_id": "env_base",
+			"parentId": "wrk_cat_api_service",
+			"modified": 1704067200000,
+			"created": 1704067200000,
+			"name": "Base Environment",
+			"data": {
+				"base_url": "http://localhost:8080",
+				"breed_id": "abys",
+				"temperament": "active",
+				"origin": "egypt"
+			},
+			"dataPropertyOrder": {
+				"&": [
+					"base_url",
+					"breed_id",
+					"temperament",
+					"origin"
+				]
+			},
+			"color": null,
+			"isPrivate": false,
+			"metaSortKey": 1704067200000,
+			"_type": "environment"
+		}
+	]
+}
+
