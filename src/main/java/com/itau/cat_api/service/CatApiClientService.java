@@ -1,6 +1,7 @@
 package com.itau.cat_api.service;
 
 import com.itau.cat_api.model.dto.BreedDTO;
+import com.itau.cat_api.model.dto.ImageDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -39,6 +40,58 @@ public class CatApiClientService {
     }
 
 
+
+    public CompletableFuture<List<ImageDTO>> getImagesByBreedAsync(String breedId, int limit) {
+        logger.debug("Fetching {} images for breed: {}", limit, breedId);
+
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/images/search")
+                        .queryParam("breed_ids", breedId)
+                        .queryParam("limit", limit)
+                        .build())
+                .header("x-api-key", apiKey)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<ImageDTO>>() {})
+                .doOnSuccess(images -> logger.info("Successfully fetched {} images for breed {}", images.size(), breedId))
+                .doOnError(error -> logger.error("Error fetching images for breed {}: {}", breedId, error.getMessage()))
+                .toFuture();
+    }
+
+
+    public CompletableFuture<List<ImageDTO>> getImagesByCategoryAsync(int categoryId, int limit) {
+        logger.debug("Fetching {} images for category: {}", limit, categoryId);
+
+        return webClient.get()
+                .uri(uriBuilder -> uriBuilder
+                        .path("/images/search")
+                        .queryParam("category_ids", categoryId)
+                        .queryParam("limit", limit)
+                        .build())
+                .header("x-api-key", apiKey)
+                .retrieve()
+                .bodyToMono(new ParameterizedTypeReference<List<ImageDTO>>() {})
+                .doOnSuccess(images -> logger.info("Successfully fetched {} images for category {}", images.size(), categoryId))
+                .doOnError(error -> logger.error("Error fetching images for category {}: {}", categoryId, error.getMessage()))
+                .toFuture();
+    }
+
+
+    public CompletableFuture<List<ImageDTO>> getAllCategoryImagesAsync() {
+        logger.debug("Fetching images for all categories in parallel");
+
+        CompletableFuture<List<ImageDTO>> hatImages = getImagesByCategoryAsync(1, 3); // Hats
+        CompletableFuture<List<ImageDTO>> sunglassesImages = getImagesByCategoryAsync(4, 3); // Sunglasses
+
+
+        return CompletableFuture.allOf(hatImages, sunglassesImages)
+                .thenApply(v -> {
+                    List<ImageDTO> allImages = hatImages.join();
+                    allImages.addAll(sunglassesImages.join());
+                    logger.info("Successfully fetched {} total category images", allImages.size());
+                    return allImages;
+                });
+    }
 
 
 }

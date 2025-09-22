@@ -1,19 +1,23 @@
 package com.itau.cat_api.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 @Entity
 @Table(name = "images")
 @Getter
 @Setter
-@Builder
+@NoArgsConstructor
+
 public class Image {
 
     @Id
-    @Column(name = "id", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "image_id", length = 50)
     private String id;
 
+    @NotBlank
     @Column(name = "url", nullable = false, columnDefinition = "TEXT")
     private String url;
 
@@ -27,13 +31,11 @@ public class Image {
     @Column(name = "category")
     private ImageCategory category;
 
-    @Column(name = "breed")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "breed_id")
     private Breed breed;
-
 
     public enum ImageCategory {
         BREED, HATS, SUNGLASSES
     }
-
-
 }
